@@ -11,7 +11,7 @@ const CartItem = ({ onContinueShopping }) => {
   const calculateTotalAmount = () => {
     let total = 0;
     cart.forEach((item) => {
-        total += parseFloat(item.cost.sunstring(1))*item.quantity
+        total += parseFloat(item.cost.subtring(1))*item.quantity
     })
     return total
   };
@@ -23,7 +23,7 @@ const CartItem = ({ onContinueShopping }) => {
 
 
   const handleIncrement = (item) => {
-    dispatch(updateQuantity(item.quantity + 1))
+    dispatch(updateQuantity({name: item.name, quntity: item.quantity + 1}))
   };
 
   const handleDecrement = (item) => {

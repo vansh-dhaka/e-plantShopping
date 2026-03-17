@@ -273,9 +273,145 @@ function ProductList({ onHomeClick }) {
                 </div>
             </div>
             {!showCart ? (
-                <div className="product-grid">
+                <div
+  className="product-grid"
+  style={{
+    margin: '0 1rem',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center'
+  }}
+>
+  {plantsArray.map((item) => (
+    <div key={item.category} style={{ width: '80%', marginBottom: '2rem' }}>
+      
+      {/* Category Heading */}
+      <h2 style={{ fontWeight: '600', marginBottom: '1rem' }}>
+        {item.category}
+      </h2>
 
-                </div>
+      {/* Cards Container */}
+      <div
+        className="card-container"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          gap: '1.5rem',
+          justifyContent: 'center'
+        }}
+      >
+        {item.plants.map((plant) => (
+          
+          <div
+            key={plant.name}
+            className="card"
+            style={{
+              position: 'relative',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'center',
+              padding: '1rem',
+              width: '220px',
+              borderRadius: '12px',
+              backgroundColor: '#fff',
+              boxShadow: '0 4px 12px rgba(0,0,0,0.1)',
+              transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.transform = 'translateY(-5px)';
+              e.currentTarget.style.boxShadow =
+                '0 8px 20px rgba(0,0,0,0.15)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.transform = 'translateY(0)';
+              e.currentTarget.style.boxShadow =
+                '0 4px 12px rgba(0,0,0,0.1)';
+            }}
+          >
+            {/* Sale Badge */}
+            <span
+              style={{
+                position: 'absolute',
+                top: '10px',
+                right: '10px',
+                backgroundColor: 'red',
+                color: 'white',
+                padding: '4px 8px',
+                borderRadius: '6px',
+                fontSize: '0.75rem',
+                fontWeight: 'bold'
+              }}
+            >
+              Sale
+            </span>
+
+            {/* Plant Name */}
+            <h4 style={{ marginBottom: '0.5rem', textAlign: 'center' }}>
+              {plant.name}
+            </h4>
+
+            {/* Image */}
+            <img
+              src={plant.image}
+              alt={plant.name}
+              style={{
+                width: '100%',
+                height: '140px',
+                objectFit: 'contain',
+                marginBottom: '0.5rem'
+              }}
+            />
+
+            {/* Price */}
+            <span
+              style={{
+                color: '#2ecc71',
+                fontSize: '1.2rem',
+                fontWeight: '600'
+              }}
+            >
+              {plant.cost}
+            </span>
+
+            {/* Description */}
+            <p
+              style={{
+                fontSize: '0.9rem',
+                textAlign: 'center',
+                margin: '0.5rem 0'
+              }}
+            >
+              {plant.description}
+            </p>
+
+            {/* Button */}
+            <button
+              style={{
+                marginTop: '0.5rem',
+                padding: '0.5rem 1rem',
+                border: 'none',
+                borderRadius: '6px',
+                backgroundColor: '#2c3e50',
+                color: 'white',
+                cursor: 'pointer',
+                transition: 'background 0.2s'
+              }}
+              onMouseEnter={(e) =>
+                (e.target.style.backgroundColor = '#1a252f')
+              }
+              onMouseLeave={(e) =>
+                (e.target.style.backgroundColor = '#2c3e50')
+              }
+            >
+              Add to Cart
+            </button>
+          </div>
+
+        ))}
+      </div>
+    </div>
+  ))}
+</div>
             ) : (
                 <CartItem onContinueShopping={handleContinueShopping} />
             )}
