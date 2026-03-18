@@ -34,7 +34,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = (e) => {
-    alert('Functionality to be added for future reference')
+    alert('Checkout functionality coming soon! Hope you enjoyed our services.')
   }
 
   // Calculate total cost based on quantity for an item
