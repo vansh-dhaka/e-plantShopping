@@ -405,16 +405,23 @@ function ProductList({ onHomeClick }) {
 
             {/* Button */}
             <button
-              style={{
-                marginTop: '0.5rem',
-                padding: '0.5rem 1rem',
-                border: 'none',
-                borderRadius: '6px',
-                backgroundColor: '#2c3e50',
-                color: 'white',
-                cursor: 'pointer',
-                transition: 'background 0.2s'
-              }}
+                style={{
+                    marginTop: '0.5rem',
+                    padding: '0.5rem 1rem',
+                    border: 'none',
+                    borderRadius: '6px',
+                    backgroundColor: CartItems.some((thisItem) => thisItem.name === plant.name)
+                      ? '#95a5a6'   // disabled color
+                      : '#2c3e50',
+                    color: 'white',
+                    cursor: CartItems.some((thisItem) => thisItem.name === plant.name)
+                      ? 'not-allowed'
+                      : 'pointer',
+                    transition: 'background 0.2s',
+                    opacity: CartItems.some((thisItem) => thisItem.name === plant.name)
+                      ? 0.6
+                      : 1
+                  }}
               onMouseEnter={(e) =>
                 (e.target.style.backgroundColor = '#1a252f')
               }
@@ -422,6 +429,7 @@ function ProductList({ onHomeClick }) {
                 (e.target.style.backgroundColor = '#2c3e50')
               }
               onClick = {() => {handleAddToCart(plant)}}
+              disabled = {CartItems.some((thisItem) => thisItem.name === plant.name)?true:false}
             >
               Add to Cart
             </button>
