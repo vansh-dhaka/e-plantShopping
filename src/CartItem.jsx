@@ -34,6 +34,7 @@ const CartItem = ({ onContinueShopping }) => {
   };
 
   const handleCheckoutShopping = (e) => {
+    console.log('Checkout functionality coming soon.')
     alert('Checkout functionality coming soon! Hope you enjoyed our services.')
   }
 
@@ -67,7 +68,7 @@ const CartItem = ({ onContinueShopping }) => {
       <div className="continue_shopping_btn">
         <button className="get-started-button" onClick={(e) => handleContinueShopping(e)}>Continue Shopping</button>
         <br />
-        <button className="get-started-button1" onClick = {(e) => handleCheckoutShopping()}>Checkout</button>
+        <button className="get-started-button1" onClick = {(e) => handleCheckoutShopping(e)}>Checkout</button>
       </div>
     </div>
   );
